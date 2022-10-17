@@ -66,3 +66,8 @@ def test_weather_damage_case():
     match = Match('https://replay.pokemonshowdown.com/gen8nationaldexag-1680375495-nazywfcmf2ntlfegv6544qyjkf6qhtgpw.json')
     match.parseData()
     assert 'Hippowdon has 0 direct kills, 1 passive kills, and 1 deaths.' in match.toString()
+
+def test_indirect_poison_case():
+    match = Match('https://replay.pokemonshowdown.com/gen8nationaldexag-1680380125-qmzyer5siqimo3xntb5ec9v82e5gugjpw.json')
+    match.parseData()
+    assert 'Venusaur-Mega has 2 direct kills, 1 passive kills, and 0 deaths.' in match.toString()

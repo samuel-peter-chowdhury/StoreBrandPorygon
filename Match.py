@@ -120,18 +120,14 @@ class Match():
 
 			# Check for an indirect kill based on status
 			if (passive_reason == 'psn' or passive_reason == 'brn'):
-				status_tokens = log_copy.split('-status')
-				del status_tokens[-1]
-				for token in reversed(status_tokens):
-					if (token.split('p' + fainted_pokemon_team + 'a: ')[-1].split('|')[0].strip() == fainted_pokemon):
-						if (token.split('|p' + fainted_pokemon_team + 'a: ')[-2].split('|')[-1] == 'switch'):
-							self.__addIndirectKill(killer_pokemon_team,
-							                       self.__getHazardSetter(killer_pokemon_team, 'Toxic Spikes'))
-						else:
-							self.__addIndirectKill(killer_pokemon_team,
-							                       log_copy.split(fainted_pokemon + '\n|-status')[-2].split(
-								                       '|p' + killer_pokemon_team + 'a: ')[-1].split('|')[0])
-						break
+				killer_turn = log_copy.split('-status|p' + fainted_pokemon_team + 'a: ' + fainted_pokemon)[-2]
+				if (killer_turn.split('|p' + fainted_pokemon_team + 'a: ' + fainted_pokemon)[-2].split('|')[1]
+						== 'switch'):
+					self.__addIndirectKill(killer_pokemon_team, self.__getHazardSetter(killer_pokemon_team,
+					                                                                   'Toxic Spikes'))
+				else:
+					self.__addIndirectKill(killer_pokemon_team, killer_turn.split('p' + killer_pokemon_team +
+					                                                              'a: ')[-1].split('|')[0])
 
 			# Check for an indirect kill based on Ability or Rocky Helmet
 			elif ('ability:' in passive_reason or passive_reason == 'item: Rocky Helmet'):
