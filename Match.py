@@ -164,7 +164,7 @@ class Match():
 			log_copy = log_copy.split('0 fnt|[', 1)[1]
 
 	def __getHazardSetter(self, team, hazard):
-		return self.__log.split('|' + hazard)[-2].split('p' + team + 'a: ')[-1]
+		return self.__log.rsplit('|' + hazard, 1)[-2].split('p' + team + 'a: ')[-1].split('|')[0]
 
 	def __addIndirectKill(self, team, nickname):
 		self.__teams[team].getPokemonWithNickname(nickname).indirect_kills += 1

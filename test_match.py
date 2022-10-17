@@ -37,6 +37,11 @@ def test_stealth_rocks_case():
     match.parseData()
     assert 'Rhyperior has 0 direct kills, 1 passive kills, and 0 deaths.' in match.toString()
 
+def test_spikes_case():
+    match = Match('https://replay.pokemonshowdown.com/gen8nationaldexag-1682698868.json')
+    match.parseData()
+    assert 'Klefki has 0 direct kills, 1 passive kills, and 0 deaths.' in match.toString()
+
 def test_toxic_spikes_case():
     match = Match('https://replay.pokemonshowdown.com/gen8nationaldex-1677109286.json')
     match.parseData()
