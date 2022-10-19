@@ -8,5 +8,5 @@ class Pokemon():
         self.mega_name = ''
 
     def __str__(self):
-        return '{} has {} direct kills, {} passive kills, and {} deaths. '\
+        return '{} has {} direct kills, {} passive kills, and {} deaths.'\
             .format(self.name if self.mega_name == '' else self.mega_name, self.direct_kills, self.indirect_kills, '1' if self.dead else '0')

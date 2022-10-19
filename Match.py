@@ -32,6 +32,14 @@ class Match():
 		out = ''
 		for number in self.__team_numbers:
 			for pokemon in self.__teams[number].pokemon.values():
+				out += str(pokemon) + ' \n'
+			out += '\n'
+		return out
+
+	def toStringNoSpace(self):
+		out = ''
+		for number in self.__team_numbers:
+			for pokemon in self.__teams[number].pokemon.values():
 				out += str(pokemon) + '\n'
 			out += '\n'
 		return out
@@ -63,7 +71,7 @@ class Match():
 			name_match = \
 			log_copy.split('p' + team_number + 'a: ', 1)[1].split('|', 1)[1].split('|', 1)[0].split(',', 1)[0]
 			if (name_match == pokemon or re.compile(r'{}'.format(pokemon)).search(name_match)):
-				nickname = log_copy.split('p' + team_number + 'a: ', 1)[1].split('|', 1)[0].split('-')[0]
+				nickname = log_copy.split('p' + team_number + 'a: ', 1)[1].split('|', 1)[0]
 				if ('-' in name_match):
 					self.__teams[team_number].pokemon[pokemon].name = name_match
 				self.__teams[team_number].pokemon[pokemon].nickname = nickname
