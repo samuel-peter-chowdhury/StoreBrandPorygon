@@ -5,13 +5,6 @@ import pytest
 
 from Match import Match
 
-def test_standard_game_case():
-    match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexlegacy-717884.json')
-    match.parseData()
-    with open('test_case_files/test_standard_game.txt', 'r') as file:
-        data = file.read()
-    assert data.replace('\n', '') == match.toStringNoSpace().replace('\n', '')
-
 def test_iron_barbs_case():
     match = Match('https://replay.pokemonshowdown.com/gen8nationaldex-1677928303.json')
     match.parseData()
@@ -86,5 +79,40 @@ def test_nickname_with_dash_case():
     match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexlegacy-742172.json')
     match.parseData()
     with open('test_case_files/test_nickname_with_dash.txt', 'r') as file:
+        data = file.read()
+    assert data.replace('\n', '') == match.toStringNoSpace().replace('\n', '')
+
+def test_standard_game_1_case():
+    match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexlegacy-717884.json')
+    match.parseData()
+    with open('test_case_files/test_standard_game_1.txt', 'r') as file:
+        data = file.read()
+    assert data.replace('\n', '') == match.toStringNoSpace().replace('\n', '')
+
+def test_standard_game_2_case():
+    match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexlegacy-717844.json')
+    match.parseData()
+    with open('test_case_files/test_standard_game_2.txt', 'r') as file:
+        data = file.read()
+    assert data.replace('\n', '') == match.toStringNoSpace().replace('\n', '')
+
+def test_standard_game_3_case():
+    match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexlegacy-717826.json')
+    match.parseData()
+    with open('test_case_files/test_standard_game_3.txt', 'r') as file:
+        data = file.read()
+    assert data.replace('\n', '') == match.toStringNoSpace().replace('\n', '')
+
+def test_standard_game_4_case():
+    match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexlegacy-717400.json')
+    match.parseData()
+    with open('test_case_files/test_standard_game_4.txt', 'r') as file:
+        data = file.read()
+    assert data.replace('\n', '') == match.toStringNoSpace().replace('\n', '')
+
+def test_standard_game_5_case():
+    match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexdraft-717302.json')
+    match.parseData()
+    with open('test_case_files/test_standard_game_5.txt', 'r') as file:
         data = file.read()
     assert data.replace('\n', '') == match.toStringNoSpace().replace('\n', '')
