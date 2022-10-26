@@ -1,6 +1,4 @@
-from Match import Match
+from Bot import bot, TOKEN
 
 if __name__ == '__main__':
-    match = Match('https://replay.pokemonshowdown.com/sports-gen8nationaldexlegacy-742172.json')
-    match.parseData()
-    print(match.toString())
+    bot.run(TOKEN)

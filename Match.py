@@ -44,6 +44,17 @@ class Match():
 			out += '\n'
 		return out
 
+	def strangeResults(self):
+		compare = {}
+		compare['1'] = {'kills': 0, 'deaths': 0}
+		compare['2'] = {'kills': 0, 'deaths': 0}
+		for number in self.__team_numbers:
+			for pokemon in self.__teams[number].pokemon.values():
+				compare[number]['kills'] += pokemon.direct_kills
+				compare[number]['kills'] += pokemon.indirect_kills
+				compare[number]['deaths'] += 1 if pokemon.dead else 0
+		return compare['1']['kills'] != compare['2']['deaths'] or compare['2']['kills'] != compare['1']['deaths']
+
 	def __getRawData(self):
 		req = Request(url=self.__url, headers={'User-Agent': 'Mozilla/5.0'})
 		self.__raw_data = json.loads(urlopen(req).read())
